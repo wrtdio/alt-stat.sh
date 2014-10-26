@@ -1,6 +1,6 @@
 #!/bin/bash
-a=wrtdio
-b=koshken
+a='$1'
+b='$2'
 cd $HOME
 if [ ! -f as.log ] ; then
   :> as.log ;
