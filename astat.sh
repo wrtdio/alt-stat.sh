@@ -1,20 +1,28 @@
 #!/bin/bash
-a='$1'
-b='$2'
-cd $HOME
-if [ ! -f as.log ] ; then
-  :> as.log ;
-fi
+. $HOME/scripts/astat.conf
 
-if [ -w as.log ] ; then
+cur_d=`date +%Y/%m/%d_%H:%M`
+if [ ! -d "$dir_source" ] ; then
+  mkdir $dir_source
+fi
+cd $HOME
+if [ ! -f "$source" ] ; then
+  :> $source ;
+fi
+if [ ! -f "$log" ] ; then
+  :> $log
+fi
+if [ -w "$source" ] ; then
+
 {
-'top -bn 1'
 'who'
 echo
-}>> as.log
-  echo " Запись добавлена"
+top -n1 -b ;
+echo
+}>> $source
+ echo "$cur_d Запись добавлена">> $log
 else 
-  echo " Запись не может быть добавлена "
+  echo "$cur_d Запись не может быть добавлена ">> $log
 fi
   
 
