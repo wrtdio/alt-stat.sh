@@ -24,15 +24,14 @@ echo
 else 
   echo "$cur_d Запись не может быть добавлена ">> $log
 fi
-  
 
- grep -wv $a as.log >> warn.log
- grep -wv $b as.log >> warn.log
+if [ ! 'grep -c $sus1 $source' == 0 ] ; then
 
-if [ $1 -a w ] ; then
-  tail -n 5 as.log ;
-else 
-
-   exit 0
+  :> $sourceb ;
+{
+echo " $bh1  $cur_d " ;
+cat $bh1
+echo
+}>> $sourceb
 fi
 
